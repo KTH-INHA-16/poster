@@ -15,9 +15,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let randomNum: UInt32 = arc4random_uniform(1000000) + 5000
-        currentValue = Int(randomNum)
-        bountyLabel.text = "$ \(currentValue)"
+        
+        refresh()
     }
     
     @IBAction func showAlert(){
@@ -28,10 +27,12 @@ class ViewController: UIViewController {
         alert.addAction(action)
         present(alert,animated: true,completion: nil)
         
-        let randomNum: UInt32 = arc4random_uniform(1000000) + 5000
-        currentValue = Int(randomNum)
-        bountyLabel.text = "$ \(currentValue)"
+        refresh()
     }
     
+    func refresh() -> Void {
+        currentValue = Int(arc4random_uniform(1000000) + 5000)
+        bountyLabel.text = "$ \(currentValue)"
+    }
 }
 
