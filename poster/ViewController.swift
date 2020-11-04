@@ -23,11 +23,13 @@ class ViewController: UIViewController {
         let message: String = "현상금은 \(currentValue) 입니다"
         
         let alert = UIAlertController(title: "Hello", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .default, handler: nil)
+        let action = UIAlertAction(title: "ok", style: .default, handler: { action in
+            self.refresh()
+        })
+        
+        //비동기적 이벤트 처리 -> 클로저
         alert.addAction(action)
         present(alert,animated: true,completion: nil)
-        
-        refresh()
     }
     
     func refresh() -> Void {
